@@ -22,9 +22,6 @@ public class IceCaveMapGenerator
 		final int OUTPUT_PATH_ARGS_INDEX = 0;
 		final int CONFIG_FILE_INDEX = 1;
 		
-		String[] strings = {"C:\\Projects\\workspace\\IceCaveMapGenerator\\", "C:\\Projects\\workspace\\IceCaveMapGenerator\\bin\\config.ini"};
-		args = strings;
-		
 		if(args.length != CONFIG_FILE_INDEX + 1){
 			printHelp();
 			return;
@@ -82,7 +79,6 @@ public class IceCaveMapGenerator
 		System.out.println("Usage: outputPath version configFile");
 		System.out.println();
 		System.out.println("outputPath - The output path to write the maps to.");
-		System.out.println("version - The version of the map.");
 		System.out.println("configFile - The path " +
 							"to the file holding parameters for " +
 							"map generation.");
