@@ -11,8 +11,8 @@ import java.util.regex.Pattern;
 
 public class IniFile {
 
-   private Pattern  _section  = Pattern.compile( "\\s*\\[([^]]*)\\]\\s*" );
-   private Pattern  _keyValue = Pattern.compile( "\\s*([^=]*)=(.*)" );
+   private Pattern  _section  = Pattern.compile( "(?!;)\\s*\\[([^]]*)\\]\\s*" );
+   private Pattern  _keyValue = Pattern.compile( "(?!;)\\s*([^=]*)=(.*)" );
    private Map< String,
       Map< String,
          String >>  _entries  = new HashMap<>();

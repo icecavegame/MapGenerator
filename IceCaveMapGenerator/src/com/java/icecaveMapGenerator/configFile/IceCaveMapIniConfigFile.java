@@ -1,7 +1,6 @@
 package com.java.icecaveMapGenerator.configFile;
 
 import java.io.IOException;
-import java.util.prefs.Preferences;
 
 import com.java.icecaveMapGenerator.general.EDifficulty;
 import com.java.icecaveMapGenerator.general.EDirection;
@@ -57,12 +56,6 @@ public class IceCaveMapIniConfigFile implements IIceCaveMapConfigFile
 	}
 
 	@Override
-	public int getBoardWidth()
-	{
-		return mIniFile.getInt("BOARD", "width", 10);
-	}
-
-	@Override
 	public int getBoardHeight()
 	{
 		return mIniFile.getInt("BOARD", "height", 10);
@@ -97,5 +90,16 @@ public class IceCaveMapIniConfigFile implements IIceCaveMapConfigFile
 		}
 		
 		return null;
+	}
+
+	public double getBoardResolution()
+	{
+		return mIniFile.getDouble("BOARD", "resoulution", 1.3);
+	}
+
+	@Override
+	public int getBoardWidth()
+	{
+		return mIniFile.getInt("BOARD", "width", 10);
 	}
 }

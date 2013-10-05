@@ -1,14 +1,28 @@
 package com.java.icecaveMapGenerator.general;
 
+import com.java.icecaveMapGenerator.general.EDifficulty;
+
+/**
+ * Enum representing the difficulty of the game.
+ * @author Tom
+ *
+ */
 public enum EDifficulty
 {
 	Easy(4),
-	Medium(8),
-	Hard(24),
-	VeryHard(24);
+	Medium(17),
+	Hard(35),
+	VeryHard(48);
 	
+	/**
+	 * Min number of moves for the difficulty.
+	 */
 	int mMinMoves;
 	
+	/**
+	 * Create a new instance of an EDifficulty object.
+	 * @param minSteps - Min steps to take to solve the stage in the difficulty.
+	 */
 	private EDifficulty(int minSteps){
 		mMinMoves = minSteps;
 	}

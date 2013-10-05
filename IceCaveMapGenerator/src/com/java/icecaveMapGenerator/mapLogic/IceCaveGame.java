@@ -62,12 +62,12 @@ public class IceCaveGame extends CollisionManager implements IIceCaveGameStatus,
 	/**
 	 * The X Board size for the current game.
 	 */
-	private int mBoardSizeX;
+	private int mBoardHeight;
 	
 	/**
 	 * The X Board size for the current game.
 	 */
-	private int mBoardSizeY;
+	private int mBoardWidth;
 	
 	/**
 	 * The Difficulty for the current game.
@@ -84,18 +84,21 @@ public class IceCaveGame extends CollisionManager implements IIceCaveGameStatus,
 	 * 
 	 * @param boulderNum
 	 *            - Number of boulders to place on board.
-	 * @param boardSizeX
+	 * @param boardWidth
 	 *            - Board width (in tiles).
-	 * @param boardSizeY
+	 * @param boardHeight
 	 *            - Board height (in tiles).
 	 * @param difficulty
 	 *            - Game difficulty.
 	 */
-	public IceCaveGame(int boulderNum, int boardSizeX, int boardSizeY, EDifficulty difficulty)
+	public IceCaveGame(int boulderNum,
+	                   int boardWidth,
+	                   int boardHeight,
+	                   EDifficulty difficulty)
 	{
 		mBoulderNum = boulderNum;
-		mBoardSizeX = boardSizeX;
-		mBoardSizeY = boardSizeY;
+		mBoardHeight = boardHeight;
+		mBoardWidth = boardWidth;
 		mDifficulty = difficulty;
 		mIsStageEnded = false;
 		mStage = new IceCaveStage();
@@ -161,8 +164,8 @@ public class IceCaveGame extends CollisionManager implements IIceCaveGameStatus,
 		mLastDirectionMoved = null;
 		mPlayerLocation = new Point(playerStart);
 		mStage.buildBoard(mDifficulty,
-				mBoardSizeY,
-				mBoardSizeX,
+				mBoardHeight,
+				mBoardWidth,
 				wallWidth,
 				new Point(playerStart),
 				mBoulderNum,

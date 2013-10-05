@@ -1,5 +1,6 @@
 package com.java;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import com.java.icecaveMapGenerator.MapWriter;
 import com.java.icecaveMapGenerator.configFile.IceCaveMapIniConfigFile;
 import com.java.icecaveMapGenerator.utils.IniFile;
+import com.java.icecaveMapGenerator.utils.bundle.BaseBundleMetaData;
 
 public class IceCaveMapGenerator
 {
@@ -19,21 +21,45 @@ public class IceCaveMapGenerator
 	public static void main(String[] args) throws NoSuchAlgorithmException, IOException
 	{
 		final String MAP_CONFIG_FILES_SECTION = "CONFIG_FILES";
+		final String GENERAL_SECTION = "GENERAL";
+		final String HASH_KEY = "hash";
 		final int OUTPUT_PATH_ARGS_INDEX = 0;
 		final int CONFIG_FILE_INDEX = 1;
+		
+		String[] strings = 
+			{"C:\\Users\\Tom\\Documents\\GitHub\\MapGenerator", 
+			 "C:\\Users\\Tom\\Documents\\GitHub\\MapGenerator\\config.ini"};
+		args = strings;
 		
 		if(args.length != CONFIG_FILE_INDEX + 1){
 			printHelp();
 			return;
 		}
 		
-		// Parse the config file.
-		IniFile configFile = new IniFile(args[CONFIG_FILE_INDEX]);
-		ArrayList<String> mapConfigFiles = configFile.getSections(MAP_CONFIG_FILES_SECTION);
+		IniFile configFile = null;
+		ArrayList<String> mapConfigFiles = null;
+		String hashAlgo = null;
+		
+		try
+		{
+			// Parse the config file.
+			configFile = new IniFile(args[CONFIG_FILE_INDEX]);
+			mapConfigFiles =
+					configFile.getSections(MAP_CONFIG_FILES_SECTION);
+			hashAlgo =
+					configFile.getString(GENERAL_SECTION, HASH_KEY, "md5");
+		}
+		catch(FileNotFoundException exception)
+		{
+			System.err.println("Config file not found " + args[CONFIG_FILE_INDEX]);
+			printHelp();
+			return;
+		}
 		
 		// Initialize the map writer.
 		MapWriter writer =
-				new MapWriter(args[OUTPUT_PATH_ARGS_INDEX]);
+				new MapWriter(args[OUTPUT_PATH_ARGS_INDEX], 
+							  hashAlgo);
 		
 		for (String mapConfig : mapConfigFiles)
 		{
@@ -54,20 +80,16 @@ public class IceCaveMapGenerator
 				}
 						
 			}
-			catch(Exception e)
+			catch(FileNotFoundException exception)
 			{
+				System.err.println("File not found " + mapConfig);
 				continue;
 			}
 			
-			writer.generateMaps(iniConfigFile.getBoulderNum(),
-								iniConfigFile.getBoardWidth(),
-								iniConfigFile.getBoardHeight(),
-								iniConfigFile.getDifficulty(),
-								numOfMapsToGenerate,
-								iniConfigFile.getPlayerStartLocation(),
-								iniConfigFile.getWallWidth(),
-								iniConfigFile.getStartingMove(),
-								iniConfigFile.getVersion());
+			BaseBundleMetaData mapData =
+					new BaseBundleMetaData(iniConfigFile);
+			
+			writer.generateMaps(numOfMapsToGenerate, mapData);
 		}
 	}
 
