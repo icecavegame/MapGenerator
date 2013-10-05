@@ -7,8 +7,9 @@ import java.util.ArrayList;
 
 import com.java.icecaveMapGenerator.MapWriter;
 import com.java.icecaveMapGenerator.configFile.IceCaveMapIniConfigFile;
+import com.java.icecaveMapGenerator.configFile.IIceCaveMapConfigFile;
 import com.java.icecaveMapGenerator.utils.IniFile;
-import com.java.icecaveMapGenerator.utils.bundle.BaseBundleMetaData;
+import com.tas.icecaveLibrary.utils.bundle.BaseBundleMetaData;
 
 public class IceCaveMapGenerator
 {

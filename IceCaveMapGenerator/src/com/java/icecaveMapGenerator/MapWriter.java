@@ -15,10 +15,10 @@ import java.nio.file.Path;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
-import com.java.icecaveMapGenerator.mapLogic.IceCaveBoard;
-import com.java.icecaveMapGenerator.mapLogic.IceCaveGame;
-import com.java.icecaveMapGenerator.utils.bundle.BaseBundleMetaData;
-import com.java.icecaveMapGenerator.utils.bundle.BundleHasher;
+import com.tas.icecaveLibrary.mapLogic.IceCaveBoard;
+import com.tas.icecaveLibrary.mapLogic.IceCaveGame;
+import com.tas.icecaveLibrary.utils.bundle.BaseBundleMetaData;
+import com.tas.icecaveLibrary.utils.bundle.BundleHasher;
 
 public class MapWriter
 {

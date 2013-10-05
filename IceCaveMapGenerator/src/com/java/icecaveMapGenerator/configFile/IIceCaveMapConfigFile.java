@@ -1,8 +1,8 @@
 package com.java.icecaveMapGenerator.configFile;
 
-import com.java.icecaveMapGenerator.general.EDifficulty;
-import com.java.icecaveMapGenerator.general.EDirection;
-import com.java.icecaveMapGenerator.utils.Point;
+import com.tas.icecaveLibrary.general.EDifficulty;
+import com.tas.icecaveLibrary.general.EDirection;
+import com.tas.icecaveLibrary.utils.Point;
 
 public interface IIceCaveMapConfigFile
 {
