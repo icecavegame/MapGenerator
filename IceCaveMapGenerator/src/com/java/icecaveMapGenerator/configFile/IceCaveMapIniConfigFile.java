@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.java.icecaveMapGenerator.utils.IniFile;
 import com.tas.icecaveLibrary.general.EDifficulty;
 import com.tas.icecaveLibrary.general.EDirection;
+import com.tas.icecaveLibrary.utils.IIceCaveMapConfigFile;
 import com.tas.icecaveLibrary.utils.Point;
 
 /**

@@ -5,17 +5,17 @@ import com.tas.icecaveLibrary.utils.Point;
 import com.tas.icecaveLibrary.utils.bundle.BaseBundleMetaData;
 
 /**
- * A bundle meta data initialized with Ini files.
+ * A bundle meta data initialized config file Ini files.
  * @author Tom
  *
  */
-public class IniBundleMetaData extends BaseBundleMetaData
+public class ConfigFileBundleMetaData extends BaseBundleMetaData
 {
 	/**
 	 * Create a new BaseBundleMetaData instance.
 	 * @param configFile - Config file to get paramters from.
 	 */
-	public IniBundleMetaData(IIceCaveMapConfigFile configFile)
+	public ConfigFileBundleMetaData(IIceCaveMapConfigFile configFile)
 	{
 		super(new Point(configFile.getPlayerStartLocation()),
 				configFile.getDifficulty(),

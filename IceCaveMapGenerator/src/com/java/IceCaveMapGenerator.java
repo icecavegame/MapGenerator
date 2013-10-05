@@ -7,9 +7,8 @@ import java.util.ArrayList;
 
 import com.java.icecaveMapGenerator.MapWriter;
 import com.java.icecaveMapGenerator.configFile.IceCaveMapIniConfigFile;
-import com.java.icecaveMapGenerator.configFile.IIceCaveMapConfigFile;
 import com.java.icecaveMapGenerator.utils.IniFile;
-import com.tas.icecaveLibrary.utils.bundle.BaseBundleMetaData;
+import com.java.icecaveMapGenerator.utils.bundle.ConfigFileBundleMetaData;
 
 public class IceCaveMapGenerator
 {
@@ -82,8 +81,8 @@ public class IceCaveMapGenerator
 				continue;
 			}
 			
-			BaseBundleMetaData mapData =
-					new BaseBundleMetaData(iniConfigFile);
+			ConfigFileBundleMetaData mapData =
+					new ConfigFileBundleMetaData(iniConfigFile);
 			
 			writer.generateMaps(numOfMapsToGenerate, mapData);
 		}
