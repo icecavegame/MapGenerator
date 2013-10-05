@@ -26,11 +26,6 @@ public class IceCaveMapGenerator
 		final int OUTPUT_PATH_ARGS_INDEX = 0;
 		final int CONFIG_FILE_INDEX = 1;
 		
-		String[] strings = 
-			{"C:\\Users\\Tom\\Documents\\GitHub\\MapGenerator", 
-			 "C:\\Users\\Tom\\Documents\\GitHub\\MapGenerator\\config.ini"};
-		args = strings;
-		
 		if(args.length != CONFIG_FILE_INDEX + 1){
 			printHelp();
 			return;
