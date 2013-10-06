@@ -79,8 +79,8 @@ public class MapWriter
 		
 		IceCaveGame game = 
 				new IceCaveGame(metaData.getBoulderNum(),
-								metaData.getBoardWidth(),
 								metaData.getBoardHeight(),
+								metaData.getBoardWidth(),
 								metaData.getDifficulty());
 		
 		parseIndexFile(filePath);
