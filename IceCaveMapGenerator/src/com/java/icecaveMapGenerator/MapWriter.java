@@ -66,8 +66,9 @@ public class MapWriter
 	 * @param metaData - Meta data to hash by.
 	 * @throws IOException 
 	 * @throws NoSuchAlgorithmException 
+	 * @throws CloneNotSupportedException 
 	 */
-	public void generateMaps(int mapsToGenerate, BaseBundleMetaData metaData) throws NoSuchAlgorithmException, IOException 
+	public void generateMaps(int mapsToGenerate, BaseBundleMetaData metaData) throws NoSuchAlgorithmException, IOException, CloneNotSupportedException 
 	{
 		mBoardHashes = new ArrayList<String>();
 		byte[] hashValue =
@@ -95,6 +96,7 @@ public class MapWriter
 							  startingMapIndex + i, 
 							  game,
 							  hashesToAdd);
+			System.out.println("Map " + i + " generated");
 		}
 		
 		// Update index file.
@@ -109,29 +111,25 @@ public class MapWriter
 	 * @param hashesToAdd
 	 * @throws FileNotFoundException
 	 * @throws IOException
+	 * @throws CloneNotSupportedException 
 	 */
 	private void generateSingleMap(BaseBundleMetaData metaData,
 									String filePath,
 									int mapIndex,
 									IceCaveGame game,
 									ArrayList<String> hashesToAdd)
-			throws FileNotFoundException, IOException
+			throws FileNotFoundException, IOException, CloneNotSupportedException
 	{
 		String hashedMap = "";
 		String fileName = String.valueOf(mapIndex);
 		
 		game.newStage(metaData.getPlayerStart(), metaData.getWallWidth());
-		IceCaveBoard board = 
-				new IceCaveBoard(game.getBoard(), 
-								 metaData.getPlayerStart(), 
-								 metaData.getFirstMove(),
-								 game.getStageMoves());
 		
 		hashedMap =
 				writeMapBoard(metaData,
 					  filePath, 
 					  fileName, 
-					  board);
+					  game.getBoard());
 		
 		// Check if to add the hash.
 		if(hashedMap != null){

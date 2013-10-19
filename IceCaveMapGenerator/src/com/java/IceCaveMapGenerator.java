@@ -17,8 +17,9 @@ public class IceCaveMapGenerator
 	 * @param args
 	 * @throws IOException 
 	 * @throws NoSuchAlgorithmException 
+	 * @throws CloneNotSupportedException 
 	 */
-	public static void main(String[] args) throws NoSuchAlgorithmException, IOException
+	public static void main(String[] args) throws NoSuchAlgorithmException, IOException, CloneNotSupportedException
 	{
 		final String MAP_CONFIG_FILES_SECTION = "CONFIG_FILES";
 		final String GENERAL_SECTION = "GENERAL";
@@ -26,6 +27,8 @@ public class IceCaveMapGenerator
 		final int OUTPUT_PATH_ARGS_INDEX = 0;
 		final int CONFIG_FILE_INDEX = 1;
 		
+		String[] strings = {"C:\\Users\\Tom\\Documents", "C:\\Users\\Tom\\Documents\\GitHub\\MapGenerator\\config.ini"};
+		args = strings;
 		if(args.length != CONFIG_FILE_INDEX + 1){
 			printHelp();
 			return;
